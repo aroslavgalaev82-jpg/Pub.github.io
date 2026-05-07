@@ -1,14 +1,14 @@
 /* --- ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ --- */
 :root {
-    --bg-color: #0b1120;
-    --card-bg: #1e293b;
-    --text-main: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --accent: #3b82f6;
-    --accent-glow: rgba(59, 130, 246, 0.6);
-    --success: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
+    --bg-color: #0b1120;       /* Очень темный синий фон */
+    --card-bg: #1e293b;        /* Цвет карточек */
+    --text-main: #f1f5f9;      /* Белый текст */
+    --text-secondary: #94a3b8; /* Серый текст */
+    --accent: #3b82f6;         /* Основной синий акцент */
+    --accent-glow: rgba(59, 130, 246, 0.6); /* Свечение */
+    --success: #10b981;        /* Зеленый (успех) */
+    --warning: #f59e0b;        /* Желтый (предупреждение) */
+    --danger: #ef4444;         /* Красный (ошибка) */
 }
 
 * {
@@ -19,7 +19,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Плавная прокрутка */
 }
 
 body {
@@ -29,7 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- ШАПКА --- */
+/* --- ШАПКА САЙТА --- */
 header {
     background-color: rgba(11, 17, 32, 0.95);
     padding: 1rem 5%;
@@ -65,7 +65,7 @@ nav a:hover {
     color: var(--accent);
 }
 
-/* --- HERO --- */
+/* --- ГЛАВНЫЙ БЛОК (HERO) --- */
 .hero {
     text-align: center;
     padding: 5rem 1rem;
@@ -88,7 +88,7 @@ nav a:hover {
     font-size: 1.2rem;
 }
 
-/* --- ФИЛЬТРЫ --- */
+/* --- ПАНЕЛЬ УПРАВЛЕНИЯ (ПОИСК И ФИЛЬТРЫ) --- */
 .controls {
     max-width: 1200px;
     margin: 0 auto 2rem;
@@ -132,7 +132,7 @@ input[type="text"]:focus {
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* --- КАРТОЧКИ --- */
+/* --- СЕТКА КАРТОЧЕК --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -142,6 +142,7 @@ input[type="text"]:focus {
     gap: 1.5rem;
 }
 
+/* --- СТИЛИ КАРТОЧКИ --- */
 .card {
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -154,6 +155,7 @@ input[type="text"]:focus {
     overflow: hidden;
 }
 
+/* Эффект блика при наведении */
 .card::before {
     content: '';
     position: absolute;
@@ -187,6 +189,7 @@ input[type="text"]:focus {
     color: var(--text-main);
 }
 
+/* БЕЙДЖИ (значки категорий) */
 .badge {
     font-size: 0.7rem;
     padding: 3px 8px;
@@ -231,6 +234,7 @@ input[type="text"]:focus {
     line-height: 0;
 }
 
+/* КНОПКА ЗАПУСКА */
 .btn-download {
     display: block;
     text-align: center;
@@ -253,7 +257,7 @@ input[type="text"]:focus {
     box-shadow: 0 0 15px var(--accent-glow);
 }
 
-/* --- МОДАЛЬНОЕ ОКНО --- */
+/* --- МОДАЛЬНОЕ ОКНО (ИСПРАВЛЕННОЕ - БЕЗ МЕРЦАНИЯ) --- */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -264,14 +268,16 @@ input[type="text"]:focus {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    
+    /* Исправление дергания: используем opacity и pointer-events */
     opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+    pointer-events: none; /* Чтобы нельзя было кликнуть, когда скрыто */
+    transition: opacity 0.3s ease;
 }
 
 .modal-overlay.active {
     opacity: 1;
-    visibility: visible;
+    pointer-events: auto; /* Включаем клики, когда видно */
 }
 
 .modal-window {
@@ -282,13 +288,17 @@ input[type="text"]:focus {
     border: 1px solid #334155;
     box-shadow: 0 0 50px rgba(59, 130, 246, 0.15);
     overflow: hidden;
+    
+    /* Анимация самого окна */
     transform: scale(0.95);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
 }
 
+/* Когда родитель активен, окно появляется */
 .modal-overlay.active .modal-window {
     transform: scale(1);
+    opacity: 1;
 }
 
 .modal-header {
@@ -331,6 +341,7 @@ input[type="text"]:focus {
     align-items: center;
 }
 
+/* Фон с эффектом матрицы */
 .matrix-bg {
     position: absolute;
     top: 0; left: 0;
@@ -377,7 +388,7 @@ input[type="text"]:focus {
     text-transform: uppercase;
 }
 
-/* --- КРУГОВОЙ ИНДИКАТОР --- */
+/* --- КРУГОВОЙ ПРОГРЕСС БАР --- */
 .circular-progress-container {
     position: relative;
     width: 180px;
@@ -390,6 +401,7 @@ input[type="text"]:focus {
     height: 100%;
 }
 
+/* Стили для SVG кругов */
 .progress-ring__circle, 
 .progress-ring__circle-bg {
     fill: transparent;
@@ -397,18 +409,19 @@ input[type="text"]:focus {
 }
 
 .progress-ring__circle-bg {
-    stroke: #1e293b;
+    stroke: #1e293b; /* Серый фон */
 }
 
 .progress-ring__circle {
-    stroke: #3b82f6;
-    stroke-linecap: round;
-    transform: rotate(-90deg);
+    stroke: #3b82f6; /* Синий цвет прогресса */
+    stroke-linecap: round; /* Закругленные края */
+    transform: rotate(-90deg); /* Поворот начала на 12 часов */
     transform-origin: 50% 50%;
     filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
     
+    /* Длина окружности для R=80: ~503 */
     stroke-dasharray: 503; 
-    stroke-dashoffset: 503; 
+    stroke-dashoffset: 503; /* Изначально скрыто (0%) */
     
     transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease; 
 }
@@ -429,7 +442,7 @@ input[type="text"]:focus {
     font-weight: bold;
     color: white;
     font-family: 'Segoe UI', sans-serif;
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums; /* Цифры одной ширины (не дрожат) */
     text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
@@ -479,6 +492,7 @@ input[type="text"]:focus {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- ПОДВАЛ (FOOTER) --- */
 footer {
     text-align: center;
     padding: 2rem;
@@ -487,13 +501,14 @@ footer {
     margin-top: 2rem;
 }
 
-/* --- АДАПТИВ --- */
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
     .controls { flex-direction: column; }
     input[type="text"] { width: 100%; }
     .modal-window { width: 95%; }
     
+    /* Уменьшаем круг на мобильных */
     .circular-progress-container { width: 150px; height: 150px; }
     
     #percentageText { font-size: 2rem; }
