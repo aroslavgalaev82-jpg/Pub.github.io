@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Diagnostics Hub | Профессиональная диагностика</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">PC DiagTools <span style="font-size:0.8rem; color:#94a3b8;">PRO</span></div>
+        <nav>
+            <a href="#tools">Инструменты</a>
+            <!-- Ссылка "О проекте" удалена или можно оставить ведущую на футер -->
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Центр Диагностики Системы</h1>
+        <p>Профессиональный набор утилит для глубокого анализа, стресс-тестов и мониторинга состояния вашего компьютера.</p>
+    </section>
+
+    <!-- Сразу переходим к инструментам -->
+    <div class="controls" id="tools">
+        <input type="text" id="searchInput" placeholder="Поиск утилиты...">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="cpu">CPU</button>
+        <button class="filter-btn" data-filter="gpu">GPU</button>
+        <button class="filter-btn" data-filter="ram">RAM</button>
+        <button class="filter-btn" data-filter="hdd">Storage</button>
+        <button class="filter-btn" data-filter="sys">System</button>
+    </div>
+
+    <main class="container" id="cardsContainer">
+        
+        <!-- CPU-Z -->
+        <article class="card" data-category="cpu sys">
+            <div class="card-header">
+                <span class="card-title">CPU-Z</span>
+                <span class="badge cpu">CPU</span>
+            </div>
+            <p class="card-desc">Базовая информация о процессоре, чипсете и памяти. Стандарт индустрии.</p>
+            <ul class="features-list">
+                <li>Валидация разгона</li>
+                <li>Точные тайминги</li>
+            </ul>
+            <button class="btn-download" data-tool="CPU-Z">Запуск диагностики</button>
+        </article>
+
+        <!-- HWMonitor -->
+        <article class="card" data-category="sys cpu gpu">
+            <div class="card-header">
+                <span class="card-title">HWMonitor</span>
+                <span class="badge sys">Sensors</span>
+            </div>
+            <p class="card-desc">Мониторинг напряжений, температур и оборотов кулеров в реальном времени.</p>
+            <ul class="features-list">
+                <li>Логирование данных</li>
+                <li>Поддержка всех датчиков</li>
+            </ul>
+            <button class="btn-download" data-tool="HWMonitor">Запуск диагностики</button>
+        </article>
+
+        <!-- FurMark -->
+        <article class="card" data-category="gpu">
+            <div class="card-header">
+                <span class="card-title">FurMark 2</span>
+                <span class="badge gpu">Stress</span>
+            </div>
+            <p class="card-desc">Экстремальный "бублик" для проверки стабильности видеокарты и блока питания.</p>
+            <ul class="features-list">
+                <li>OpenGL бенчмарк</li>
+                <li>Тест на артефакты</li>
+            </ul>
+            <button class="btn-download" data-tool="FurMark">Запуск диагностики</button>
+        </article>
+
+        <!-- AIDA64 -->
+        <article class="card" data-category="sys cpu ram gpu hdd">
+            <div class="card-header">
+                <span class="card-title">AIDA64 Extreme</span>
+                <span class="badge sys">All-in-One</span>
+            </div>
+            <p class="card-desc">Комплексная диагностика всего ПК. Тест стабильности системы (FPU Stress).</p>
+            <ul class="features-list">
+                <li>Полный аудит ПО</li>
+                <li>Троттлинг-тест</li>
+            </ul>
+            <button class="btn-download" data-tool="AIDA64">Запуск диагностики</button>
+        </article>
+
+        <!-- MemTest86 -->
+        <article class="card" data-category="ram">
+            <div class="card-header">
+                <span class="card-title">MemTest86</span>
+                <span class="badge ram">RAM</span>
+            </div>
+            <p class="card-desc">Глубокий анализ оперативной памяти на ошибки (загрузка с USB).</p>
+            <ul class="features-list">
+                <li>10+ алгоритмов теста</li>
+                <li>Поиск битых секторов</li>
+            </ul>
+            <button class="btn-download" data-tool="MemTest86">Запуск диагностики</button>
+        </article>
+
+        <!-- CrystalDiskInfo -->
+        <article class="card" data-category="hdd">
+            <div class="card-header">
+                <span class="card-title">CrystalDiskInfo</span>
+                <span class="badge hdd">Health</span>
+            </div>
+            <p class="card-desc">Быстрая проверка здоровья HDD и SSD через S.M.A.R.T. атрибуты.</p>
+            <ul class="features-list">
+                <li>Остаток ресурса SSD</li>
+                <li>Температура дисков</li>
+            </ul>
+            <button class="btn-download" data-tool="CrystalDiskInfo">Запуск диагностики</button>
+        </article>
+
+         <!-- Cinebench -->
+         <article class="card" data-category="cpu gpu">
+            <div class="card-header">
+                <span class="card-title">Cinebench 2024</span>
+                <span class="badge cpu">Render</span>
+            </div>
+            <p class="card-desc">Реалистичный тест мощности процессора при рендеринге сложных сцен.</p>
+            <ul class="features-list">
+                <li>Сравнение с топовыми CPU</li>
+                <li>Тест GPU (OpenGL)</li>
+            </ul>
+            <button class="btn-download" data-tool="Cinebench">Запуск диагностики</button>
+        </article>
+
+        <!-- OCCT -->
+        <article class="card" data-category="sys cpu gpu">
+            <div class="card-header">
+                <span class="card-title">OCCT Personal</span>
+                <span class="badge sys">Power</span>
+            </div>
+            <p class="card-desc">Лучший инструмент для проверки стабильности блока питания и поиска ошибок.</p>
+            <ul class="features-list">
+                <li>Detected Errors счетчик</li>
+                <li>Voltage мониторинг</li>
+            </ul>
+            <button class="btn-download" data-tool="OCCT">Запуск диагностики</button>
+        </article>
+
+        <!-- Victoria -->
+        <article class="card" data-category="hdd">
+            <div class="card-header">
+                <span class="card-title">Victoria HDD/SSD</span>
+                <span class="badge hdd">Repair</span>
+            </div>
+            <p class="card-desc">Продвинутая утилита для поверхностного сканирования диска и лечения Bad-блоков.</p>
+            <ul class="features-list">Конечно. Я убрал секцию «О проекте» из HTML и соответствующие стили из CSS. Теперь сайт сразу переходит от заголовка к списку инструментов.
+
+Вот исправленные файлы:
+
+### 1. `index.html`
+(Секция `<section id="about-section">` удалена, ссылка в меню изменена на якорь `#tools`)
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Diagnostics Hub | Профессиональная диагностика</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">PC DiagTools <span style="font-size:0.8rem; color:#94a3b8;">PRO</span></div>
+        <nav>
+            <a href="#tools">Инструменты</a>
+            <!-- Ссылка "О проекте" удалена или можно оставить ведущую на футер -->
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Центр Диагностики Системы</h1>
+        <p>Профессиональный набор утилит для глубокого анализа, стресс-тестов и мониторинга состояния вашего компьютера.</p>
+    </section>
+
+    <!-- Сразу переходим к инструментам -->
+    <div class="controls" id="tools">
+        <input type="text" id="searchInput" placeholder="Поиск утилиты...">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="cpu">CPU</button>
+        <button class="filter-btn" data-filter="gpu">GPU</button>
+        <button class="filter-btn" data-filter="ram">RAM</button>
+        <button class="filter-btn" data-filter="hdd">Storage</button>
+        <button class="filter-btn" data-filter="sys">System</button>
+    </div>
+
+    <main class="container" id="cardsContainer">
+        
+        <!-- CPU-Z -->
+        <article class="card" data-category="cpu sys">
+            <div class="card-header">
+                <span class="card-title">CPU-Z</span>
+                <span class="badge cpu">CPU</span>
+            </div>
+            <p class="card-desc">Базовая информация о процессоре, чипсете и памяти. Стандарт индустрии.</p>
+            <ul class="features-list">
+                <li>Валидация разгона</li>
+                <li>Точные тайминги</li>
+            </ul>
+            <button class="btn-download" data-tool="CPU-Z">Запуск диагностики</button>
+        </article>
+
+        <!-- HWMonitor -->
+        <article class="card" data-category="sys cpu gpu">
+            <div class="card-header">
+                <span class="card-title">HWMonitor</span>
+                <span class="badge sys">Sensors</span>
+            </div>
+            <p class="card-desc">Мониторинг напряжений, температур и оборотов кулеров в реальном времени.</p>
+            <ul class="features-list">
+                <li>Логирование данных</li>
+                <li>Поддержка всех датчиков</li>
+            </ul>
+            <button class="btn-download" data-tool="HWMonitor">Запуск диагностики</button>
+        </article>
+
+        <!-- FurMark -->
+        <article class="card" data-category="gpu">
+            <div class="card-header">
+                <span class="card-title">FurMark 2</span>
+                <span class="badge gpu">Stress</span>
+            </div>
+            <p class="card-desc">Экстремальный "бублик" для проверки стабильности видеокарты и блока питания.</p>
+            <ul class="features-list">
+                <li>OpenGL бенчмарк</li>
+                <li>Тест на артефакты</li>
+            </ul>
+            <button class="btn-download" data-tool="FurMark">Запуск диагностики</button>
+        </article>
+
+        <!-- AIDA64 -->
+        <article class="card" data-category="sys cpu ram gpu hdd">
+            <div class="card-header">
+                <span class="card-title">AIDA64 Extreme</span>
+                <span class="badge sys">All-in-One</span>
+            </div>
+            <p class="card-desc">Комплексная диагностика всего ПК. Тест стабильности системы (FPU Stress).</p>
+            <ul class="features-list">
+                <li>Полный аудит ПО</li>
+                <li>Троттлинг-тест</li>
+            </ul>
+            <button class="btn-download" data-tool="AIDA64">Запуск диагностики</button>
+        </article>
+
+        <!-- MemTest86 -->
+        <article class="card" data-category="ram">
+            <div class="card-header">
+                <span class="card-title">MemTest86</span>
+                <span class="badge ram">RAM</span>
+            </div>
+            <p class="card-desc">Глубокий анализ оперативной памяти на ошибки (загрузка с USB).</p>
+            <ul class="features-list">
+                <li>10+ алгоритмов теста</li>
+                <li>Поиск битых секторов</li>
+            </ul>
+            <button class="btn-download" data-tool="MemTest86">Запуск диагностики</button>
+        </article>
+
+        <!-- CrystalDiskInfo -->
+        <article class="card" data-category="hdd">
+            <div class="card-header">
+                <span class="card-title">CrystalDiskInfo</span>
+                <span class="badge hdd">Health</span>
+            </div>
+            <p class="card-desc">Быстрая проверка здоровья HDD и SSD через S.M.A.R.T. атрибуты.</p>
+            <ul class="features-list">
+                <li>Остаток ресурса SSD</li>
+                <li>Температура дисков</li>
+            </ul>
+            <button class="btn-download" data-tool="CrystalDiskInfo">Запуск диагностики</button>
+        </article>
+
+         <!-- Cinebench -->
+         <article class="card" data-category="cpu gpu">
+            <div class="card-header">
+                <span class="card-title">Cinebench 2024</span>
+                <span class="badge cpu">Render</span>
+            </div>
+            <p class="card-desc">Реалистичный тест мощности процессора при рендеринге сложных сцен.</p>
+            <ul class="features-list">
+                <li>Сравнение с топовыми CPU</li>
+                <li>Тест GPU (OpenGL)</li>
+            </ul>
+            <button class="btn-download" data-tool="Cinebench">Запуск диагностики</button>
+        </article>
+
+        <!-- OCCT -->
+        <article class="card" data-category="sys cpu gpu">
+            <div class="card-header">
+                <span class="card-title">OCCT Personal</span>
+                <span class="badge sys">Power</span>
+            </div>
+            <p class="card-desc">Лучший инструмент для проверки стабильности блока питания и поиска ошибок.</p>
+            <ul class="features-list">
+                <li>Detected Errors счетчик</li>
+                <li>Voltage мониторинг</li>
+            </ul>
+            <button class="btn-download" data-tool="OCCT">Запуск диагностики</button>
+        </article>
+
+        <!-- Victoria -->
+        <article class="card" data-category="hdd">
+            <div class="card-header">
+                <span class="card-title">Victoria HDD/SSD</span>
+                <span class="badge hdd">Repair</span>
+            </div>
+            <p class="card-desc">Продвинутая утилита для поверхностного сканирования диска и лечения Bad-блоков.</p>
+            <ul class="features-list">
+                <li>Remap стертых секторов</li>
+                <li>Замер скорости чтения</li>
+            </ul>
+            <button class="btn-download" data-tool="Victoria">Запуск диагностики</button>
+        </article>
+
+        <!-- MSI Afterburner -->
+        <article class="card" data-category="gpu sys">
+            <div class="card-header">
+                <span class="card-title">MSI Afterburner</span>
+                <span class="badge gpu">Overclock</span>
+            </div>
+            <p class="card-desc">Разгон видеокарты и мониторинг FPS/температур прямо в играх (OSD).</p>
+            <ul class="features-list">
+                <li>Запись видео геймплея</li>
+                <li>Кастомные профили Fan</li>
+            </ul>
+            <button class="btn-download" data-tool="MSI Afterburner">Запуск диагностики</button>
+        </article>
+
+        <!-- CrystalDiskMark -->
+        <article class="card" data-category="hdd">
+            <div class="card-header">
+                <span class="card-title">CrystalDiskMark</span>
+                <span class="badge hdd">Speed</span>
+            </div>
+            <p class="card-desc">Измерение реальной скорости чтения и записи вашего накопителя.</p>
+            <ul class="features-list">
+                <li>SEQ1M Q8T1 тесты</li>
+                <li>RND4K тесты (важно для SSD)</li>
+            </ul>
+            <button class="btn-download" data-tool="CrystalDiskMark">Запуск диагностики</button>
+        </article>
+
+        <!-- Prime95 -->
+        <article class="card" data-category="cpu">
+            <div class="card-header">
+                <span class="card-title">Prime95</span>
+                <span class="badge cpu">Torture</span>
+            </div>
+            <p class="card-desc">Самый жесткий тест стабильности процессора. Нагревает CPU до максимума.</p>
+            <ul class="features-list">
+                <li>Small FFTs (макс. нагрев)</li>
+                <li>Blend test (нагрузку RAM)</li>
+            </ul>
+            <button class="btn-download" data-tool="Prime95">Запуск диагностики</button>
+        </article>
+
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО С КРУГОВЫМ ИНДИКАТОРОМ -->
+    <div id="diagnosticModal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3 id="modalTitle">SYSTEM DIAGNOSTIC</h3>
+                <button id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="matrix-bg"></div>
+                
+                <div class="scan-content">
+                    <div class="status-text" id="scanStatus">CONNECTING...</div>
+                    
+                    <div class="circular-progress-container">
+                        <svg class="progress-ring" width="180" height="180">
+                            <circle class="progress-ring__circle-bg" stroke="#1e293b" stroke-width="8" fill="transparent" r="80" cx="90" cy="90"/>
+                            <circle class="progress-ring__circle" stroke="#3b82f6" stroke-width="8" fill="transparent" r="80" cx="90" cy="90"/>
+                        </svg>
+                        <div class="percentage-wrapper">
+                            <span id="percentageText">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box" id="resultBox" style="display: none;">
+                        <div class="result-icon">&#10004;</div>
+                        <div class="result-message">
+                            <h4>АНАЛИЗ ЗАВЕРШЕН</h4>
+                            <p id="systemHealthText">Система исправна на 98%</p>
+                            <small id="systemDetails">Угроз не обнаружено. Драйверы актуальны.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PC Diagnostics Hub PRO. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
